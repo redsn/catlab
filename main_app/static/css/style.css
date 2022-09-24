@@ -1,0 +1,22 @@
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  header .nav-wrapper{
+    padding-left: 1rem;
+  }
+  
+  main {
+    /* flex: 1 0 auto;
+     */
+    flex-grow: 1;
+  }
+  
+  footer {
+    padding-top: 0;
+    text-align: right;
+    padding-right: 1rem;
+  }

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Toy Index</h1>
+{% for toy in toys%}
+<div class="card">
+    <div class="card-content">
+        <a href="/toys/{{toy.id}}">
+            <p>Toy Name: {{toy.name}}</p>
+            <p>Color: {{toy.color}}</p>
+        </a>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

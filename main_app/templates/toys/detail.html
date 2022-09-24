@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Toy Details</h1>
+<p>Name: {{toy.name}}</p>
+<p>Color: {{toy.color}}</p>
+
+<div class="card-action">
+    <a href="{% url 'toy_update' toy.id %}">Edit</a>
+    <a href="{% url 'toy_delete' toy.id %}">Delete</a>
+</div>
+
+{% endblock %}
