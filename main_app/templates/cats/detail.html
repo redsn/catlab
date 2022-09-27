@@ -50,6 +50,47 @@
         </table>
     </div>
 </div>
+<hr>
+<div class="row">
+    <div class="col s6">
+        <h3>{{cat.name}}'s TOYS</h3>
+        {% if cat.toys.count %}
+        {% for toy in cat.toys.all %}
+        <div class="card">
+            <div class="card-content">
+                <span class="card-title">
+                    A <span class="{{toy.color.lower}}-text">{{toy.color}}</span> {{ toy.name }}
+                </span>
+            </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        <h1>No Toys</h1>
+        {% endif %}
+    </div>
+    <div class="col s6">
+        <h3>Available Toys</h3>
+        {% if toys_cat_doesnt_have.count %}
+        {% for toy in toys_cat_doesnt_have.all %}
+        <div class="card">
+            <div class="card-content">
+                <span class="card-title">
+                    A <span class="{{toy.color.lower}}-text">{{toy.color}}</span> {{ toy.name }}
+                </span>
+            </div>
+            <div class="card-action">
+                <form action="{% url 'assoc_toy' cat.id toy.id %}" method="POST">
+                    {% csrf_token %}
+                    <input type="submit" class="btn red" value="Add Toy">
+                </form>
+            </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        <h5>No toys left</h5>
+        {% endif %}
+    </div>
+</div>
 <script>
     const dateEl = document.getElementById('id_date');
 

@@ -24,17 +24,20 @@
                     <li><a href="{% url 'home' %}" class="left brand-logo">Cat Collector</a></li>
                 </ul>
                 <ul class="right">
-
+                    {% if user.is_authenticated %}
                     <li><a href="{% url 'toy_index' %}">Toys</a></li>
                     <li><a href="{% url 'toy_create' %}">Create a Toy</a></li>
-                    
-                </ul>
-                <ul class="right">
-                    <li><a href="/about">About</a></li>
                     <li><a href="{% url 'cat_create' %}">Add a Cat</a></li>
                     <li>
                         <a href="{% url 'cat_index' %}">View my Cats</a></li>
                     </li>
+                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                    {% else %}
+                    
+                    <li><a href="/accounts/login/">Login</a></li>
+                    <li><a href="{% url 'signup' %}">Sign-up</a></li>
+                    {% endif %}
+                    <li><a href="/about">About</a></li>
                 </ul>
             </div>
         </nav>
