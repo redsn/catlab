@@ -21,6 +21,19 @@
                 <a href="{% url 'cat_delete' cat.id %}">Remove</a>
             </div>
         </div>
+        {% for photo in cat.photo_set.all %}
+        <img src="{{photo.url}}" alt="photo" class="responsive-img card-panel">
+        {% empty %}
+        <div class="card-panel teal-text center-align">
+            No Photos Uploaded
+        </div>
+        {% endfor %}
+        <form action="{% url 'add_photo' cat.id %}" enctype="multipart/form-data" method="post" class="card-panel">
+            {% csrf_token %}
+            <input type="file" name="photo-file" />
+            <br/><br/>
+            <input type="submit" value="Upload Photo" class="btn">
+        </form>
     </div>
     <div class="col s6">
         <form action="{% url 'add_feeding' cat.id %}"  method="POST">
